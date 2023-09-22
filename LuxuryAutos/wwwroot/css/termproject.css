@@ -1,0 +1,12 @@
+﻿h1{
+    font-size: 4rem;
+    margin-top: 8%;
+    font-weight: 500;
+}
+.slogan{
+    font-size: 2rem;
+}
+body {
+    background-color: black;
+    font-family: 'Poppins', sans-serif;
+}
