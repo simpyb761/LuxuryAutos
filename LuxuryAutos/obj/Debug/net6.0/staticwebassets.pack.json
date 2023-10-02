@@ -21,6 +21,14 @@
       "PackagePath": "staticwebassets\\Images\\f12Optimized.jpg"
     },
     {
+      "Id": "C:\\Users\\simpy\\Documents\\GitHub\\LuxuryAutos\\LuxuryAutos\\wwwroot\\Images\\gt3Optimized.jpg",
+      "PackagePath": "staticwebassets\\Images\\gt3Optimized.jpg"
+    },
+    {
+      "Id": "C:\\Users\\simpy\\Documents\\GitHub\\LuxuryAutos\\LuxuryAutos\\wwwroot\\Images\\vanquish-zagata.jpg",
+      "PackagePath": "staticwebassets\\Images\\vanquish-zagata.jpg"
+    },
+    {
       "Id": "C:\\Users\\simpy\\Documents\\GitHub\\LuxuryAutos\\LuxuryAutos\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

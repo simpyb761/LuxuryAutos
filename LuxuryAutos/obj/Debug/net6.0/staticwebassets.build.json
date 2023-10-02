@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "NyrDICu6ZJvAsF5TJxo4TAKgidlqTbHDQiJAa/eNSqI=",
+  "Hash": "SSi7KvWUjpwVe9Om40Tai5HH/F0daBVt10vusLbxemA=",
   "Source": "LuxuryAutos",
   "BasePath": "_content/LuxuryAutos",
   "Mode": "Default",
@@ -1188,6 +1188,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Images\\f12Optimized.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\simpy\\Documents\\GitHub\\LuxuryAutos\\LuxuryAutos\\wwwroot\\Images\\gt3Optimized.jpg",
+      "SourceId": "LuxuryAutos",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\simpy\\Documents\\GitHub\\LuxuryAutos\\LuxuryAutos\\wwwroot\\",
+      "BasePath": "_content/LuxuryAutos",
+      "RelativePath": "Images/gt3Optimized.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\gt3Optimized.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\simpy\\Documents\\GitHub\\LuxuryAutos\\LuxuryAutos\\wwwroot\\Images\\vanquish-zagata.jpg",
+      "SourceId": "LuxuryAutos",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\simpy\\Documents\\GitHub\\LuxuryAutos\\LuxuryAutos\\wwwroot\\",
+      "BasePath": "_content/LuxuryAutos",
+      "RelativePath": "Images/vanquish-zagata.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\vanquish-zagata.jpg"
     },
     {
       "Identity": "C:\\Users\\simpy\\Documents\\GitHub\\LuxuryAutos\\LuxuryAutos\\wwwroot\\js\\site.js",
