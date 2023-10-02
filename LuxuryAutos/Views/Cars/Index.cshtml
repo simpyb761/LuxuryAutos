@@ -4,56 +4,25 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<div class="row text-center mt-4 bg-danger p-5">
+    <div class="row col-12">
+        <h1 class="mb-4">Inventory</h1>
+    </div>
+    <div class="row mt-1 text-center">
+        @foreach (var item in Model)
+        {
+            <div class="col-6 bg-dark p-4">
+                <h3 style="color:white;">@Html.DisplayFor(modelItem => item.Make) @Html.DisplayFor(modelItem => item.Model)</h3>
+                <img src="@Html.DisplayFor(modelItem => item.CarPicture)" alt="@Html.DisplayFor(modelItem => item.Model) Picture">
+                <p class="border bg-white p-3 text-center w-50 text-center ms-auto me-auto rounded mt-2">
+                    Price: @Html.DisplayFor(model => item.Price)<br>
+                    Top Speed: @Html.DisplayFor(model => item.TopSpeed)<sup>*</sup><br>
+                </p>
+                <a style="color:red; text-decoration:none;" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |               
+                <a style="color:red; text-decoration:none;" asp-action="Delete" asp-route-id="@item.Id">Delete</a> |
+                <a style="color:red; text-decoration:none;" asp-action="Create">Create New</a>
+            </div>
+        }         
+    </div>
+</div>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Model)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Make)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TopSpeed)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CarPicture)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Model)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Make)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TopSpeed)
-            </td>
-            <td>
-                    <img src="@Html.DisplayFor(modelItem => item.CarPicture)" alt="@Html.DisplayFor(modelItem => item.Model) Picture">
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>

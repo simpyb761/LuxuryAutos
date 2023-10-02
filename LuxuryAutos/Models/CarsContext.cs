@@ -17,7 +17,7 @@ namespace LuxuryAutos.Models
                     Make = Make.Ferrari,
                     TopSpeed = 211,
                     Price = 289999,
-                    CarPicture = "~/Images/f12Optimized.jpg"
+                    CarPicture = "/Images/f12Optimized.jpg"
                 },
                 new Models.Cars()
                 {
@@ -26,7 +26,7 @@ namespace LuxuryAutos.Models
                     Make = Make.Lamborghini,
                     TopSpeed = 220,
                     Price = 556000,
-                    CarPicture = "~/Images/aventadorOptimized.jpg"
+                    CarPicture = "/Images/aventadorOptimized.jpg"
                 },
                 new Models.Cars()
                 {
@@ -35,16 +35,16 @@ namespace LuxuryAutos.Models
                     Make = Make.Porsche,
                     TopSpeed = 184,
                     Price = 250000,
-                    CarPicture = "~/Images/gt3Optomized.jpg"
+                    CarPicture = "/Images/gt3Optimized.jpg"
                 },
                 new Models.Cars()
                 {
                     Id = 4,
-                    Model = "F12",
-                    Make = Make.Ferrari,
-                    TopSpeed = 211,
-                    Price = 289999,
-                    CarPicture = "~/Images/vanquish-zagata.jpg"
+                    Model = "Vanquish",
+                    Make = Make.Porsche,
+                    TopSpeed = 225,
+                    Price = 350000,
+                    CarPicture = "/Images/vanquish-zagata.jpg"
                 }
                 );
         }

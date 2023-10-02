@@ -4,6 +4,7 @@ using LuxuryAutos.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LuxuryAutos.Migrations
 {
     [DbContext(typeof(CarsContext))]
-    partial class CarsContextModelSnapshot : ModelSnapshot
+    [Migration("20231002023705_NewSeeds")]
+    partial class NewSeeds
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -74,7 +76,7 @@ namespace LuxuryAutos.Migrations
                         new
                         {
                             Id = 3,
-                            CarPicture = "/Images/gt3Optimized.jpg",
+                            CarPicture = "/Images/gt3Optomized.jpg",
                             Make = 2,
                             Model = "911 GT3 RS",
                             Price = 250000.0,

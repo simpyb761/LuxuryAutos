@@ -4,6 +4,7 @@ using LuxuryAutos.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LuxuryAutos.Migrations
 {
     [DbContext(typeof(CarsContext))]
-    partial class CarsContextModelSnapshot : ModelSnapshot
+    [Migration("20231002023333_NewSeed")]
+    partial class NewSeed
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -56,7 +58,7 @@ namespace LuxuryAutos.Migrations
                         new
                         {
                             Id = 1,
-                            CarPicture = "/Images/f12Optimized.jpg",
+                            CarPicture = "~/Images/f12Optimized.jpg",
                             Make = 0,
                             Model = "F12",
                             Price = 289999.0,
@@ -65,7 +67,7 @@ namespace LuxuryAutos.Migrations
                         new
                         {
                             Id = 2,
-                            CarPicture = "/Images/aventadorOptimized.jpg",
+                            CarPicture = "~/Images/aventadorOptimized.jpg",
                             Make = 1,
                             Model = "Aventador",
                             Price = 556000.0,
@@ -74,7 +76,7 @@ namespace LuxuryAutos.Migrations
                         new
                         {
                             Id = 3,
-                            CarPicture = "/Images/gt3Optimized.jpg",
+                            CarPicture = "~/Images/gt3Optomized.jpg",
                             Make = 2,
                             Model = "911 GT3 RS",
                             Price = 250000.0,
@@ -83,7 +85,7 @@ namespace LuxuryAutos.Migrations
                         new
                         {
                             Id = 4,
-                            CarPicture = "/Images/vanquish-zagata.jpg",
+                            CarPicture = "~/Images/vanquish-zagata.jpg",
                             Make = 2,
                             Model = "Vanquish",
                             Price = 350000.0,
