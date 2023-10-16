@@ -7,89 +7,89 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using LuxuryAutos.Models;
 
-namespace LuxuryAutos.Controllers
+namespace LuxuryAutos.Views
 {
-    public class CarsController : Controller
+    public class LocationsController : Controller
     {
         private readonly CarsContext _context;
 
-        public CarsController(CarsContext context)
+        public LocationsController(CarsContext context)
         {
             _context = context;
         }
 
-        // GET: Cars
+        // GET: Locations
         public async Task<IActionResult> Index()
         {
-              return _context.Cars != null ? 
-                          View( await _context.Cars.Include(a =>a.Location).ToListAsync()) :
-                          Problem("Entity set 'CarsContext.Cars'  is null.");
+              return _context.Locations != null ? 
+                          View(await _context.Locations.ToListAsync()) :
+                          Problem("Entity set 'CarsContext.Locations'  is null.");
         }
 
-        // GET: Cars/Details/5
+        // GET: Locations/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Cars == null)
+            if (id == null || _context.Locations == null)
             {
                 return NotFound();
             }
 
-            var cars = await _context.Cars
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (cars == null)
+            var location = await _context.Locations
+                .FirstOrDefaultAsync(m => m.LocationId == id);
+            if (location == null)
             {
                 return NotFound();
             }
 
-            return View(cars);
+            return View(location);
         }
 
-        // GET: Cars/Create
+        // GET: Locations/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Cars/Create
+        // POST: Locations/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Model,Make,Price,TopSpeed,CarPicture")] Cars cars)
+        public async Task<IActionResult> Create([Bind("LocationId,LocationName,Manager,Address")] Location location)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(cars);
+                _context.Add(location);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(cars);
+            return View(location);
         }
 
-        // GET: Cars/Edit/5
+        // GET: Locations/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Cars == null)
+            if (id == null || _context.Locations == null)
             {
                 return NotFound();
             }
 
-            var cars = await _context.Cars.FindAsync(id);
-            if (cars == null)
+            var location = await _context.Locations.FindAsync(id);
+            if (location == null)
             {
                 return NotFound();
             }
-            return View(cars);
+            return View(location);
         }
 
-        // POST: Cars/Edit/5
+        // POST: Locations/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Model,Make,Price,TopSpeed,CarPicture")] Cars cars)
+        public async Task<IActionResult> Edit(int id, [Bind("LocationId,LocationName,Manager,Address")] Location location)
         {
-            if (id != cars.Id)
+            if (id != location.LocationId)
             {
                 return NotFound();
             }
@@ -98,12 +98,12 @@ namespace LuxuryAutos.Controllers
             {
                 try
                 {
-                    _context.Update(cars);
+                    _context.Update(location);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!CarsExists(cars.Id))
+                    if (!LocationExists(location.LocationId))
                     {
                         return NotFound();
                     }
@@ -114,49 +114,49 @@ namespace LuxuryAutos.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(cars);
+            return View(location);
         }
 
-        // GET: Cars/Delete/5
+        // GET: Locations/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Cars == null)
+            if (id == null || _context.Locations == null)
             {
                 return NotFound();
             }
 
-            var cars = await _context.Cars
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (cars == null)
+            var location = await _context.Locations
+                .FirstOrDefaultAsync(m => m.LocationId == id);
+            if (location == null)
             {
                 return NotFound();
             }
 
-            return View(cars);
+            return View(location);
         }
 
-        // POST: Cars/Delete/5
+        // POST: Locations/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Cars == null)
+            if (_context.Locations == null)
             {
-                return Problem("Entity set 'CarsContext.Cars'  is null.");
+                return Problem("Entity set 'CarsContext.Locations'  is null.");
             }
-            var cars = await _context.Cars.FindAsync(id);
-            if (cars != null)
+            var location = await _context.Locations.FindAsync(id);
+            if (location != null)
             {
-                _context.Cars.Remove(cars);
+                _context.Locations.Remove(location);
             }
             
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool CarsExists(int id)
+        private bool LocationExists(int id)
         {
-          return (_context.Cars?.Any(e => e.Id == id)).GetValueOrDefault();
+          return (_context.Locations?.Any(e => e.LocationId == id)).GetValueOrDefault();
         }
     }
 }

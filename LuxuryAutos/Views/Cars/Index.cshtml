@@ -17,6 +17,7 @@
                 <p class="border bg-white p-3 text-center w-50 text-center ms-auto me-auto rounded mt-2">
                     Price: @Html.DisplayFor(model => item.Price)<br>
                     Top Speed: @Html.DisplayFor(model => item.TopSpeed)<sup>*</sup><br>
+                    Location: @Html.DisplayFor(model => item.Location.LocationName)
                 </p>
                 <a style="color:red; text-decoration:none;" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |               
                 <a style="color:red; text-decoration:none;" asp-action="Delete" asp-route-id="@item.Id">Delete</a> |

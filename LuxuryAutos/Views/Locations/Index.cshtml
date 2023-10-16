@@ -1,0 +1,29 @@
+﻿@model IEnumerable<LuxuryAutos.Models.Location>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+
+<div class="row text-center mt-4 bg-danger p-5">
+    <div class="row col-12">
+        <h1 class="mb-4">Locations</h1>
+    </div>
+    <div class="row mt-1 text-center">
+        @foreach (var item in Model)
+        {
+            <div class="col-6 bg-dark p-4">
+                <h3 style="color:white;">@Html.DisplayFor(modelItem => item.LocationName)</h3>
+                
+                <p class="border bg-white p-3 text-center w-50 text-center ms-auto me-auto rounded mt-2">
+                    Manager: @Html.DisplayFor(model => item.Manager)<br>
+                    Address: @Html.DisplayFor(model => item.Address)<sup></sup><br>
+                </p>
+                <a style="color:red; text-decoration:none;" asp-action="Edit" asp-route-id="@item.LocationId">Edit</a> |
+                <a style="color:red; text-decoration:none;" asp-action="Delete" asp-route-id="@item.LocationId">Delete</a> |
+                <a style="color:red; text-decoration:none;" asp-action="Create">Create New</a>
+            </div>
+        }
+    </div>
+</div>

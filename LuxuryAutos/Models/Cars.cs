@@ -21,9 +21,12 @@ namespace LuxuryAutos.Models
         public Make Make { get; set; }
         [Required]
         public double Price { get; set; }
+        [Display(Name ="Top Speed")]
         public int? TopSpeed { get; set; }
         public string CarPicture { get; set; }
-
+        [Display(Name ="Location Id")]
+        public int LocationId {  get; set; }
+        public Location? Location { get; set; }
 
     }
 }
