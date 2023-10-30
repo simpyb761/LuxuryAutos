@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using LuxuryAutos.Models;
 
-namespace LuxuryAutos.Views
+namespace LuxuryAutos.Controllers
 {
     public class LocationsController : Controller
     {
@@ -21,9 +21,9 @@ namespace LuxuryAutos.Views
         // GET: Locations
         public async Task<IActionResult> Index()
         {
-              return _context.Locations != null ? 
-                          View(await _context.Locations.ToListAsync()) :
-                          Problem("Entity set 'CarsContext.Locations'  is null.");
+            return _context.Locations != null ?
+                        View(await _context.Locations.ToListAsync()) :
+                        Problem("Entity set 'CarsContext.Locations'  is null.");
         }
 
         // GET: Locations/Details/5
@@ -149,14 +149,14 @@ namespace LuxuryAutos.Views
             {
                 _context.Locations.Remove(location);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool LocationExists(int id)
         {
-          return (_context.Locations?.Any(e => e.LocationId == id)).GetValueOrDefault();
+            return (_context.Locations?.Any(e => e.LocationId == id)).GetValueOrDefault();
         }
     }
 }
