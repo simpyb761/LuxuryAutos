@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\simpy\\OneDrive\\Documents\\GitHub\\cit218\\LuxuryAutos\\LuxuryAutos\\LuxuryAutos.csproj": {}
+    "C:\\Users\\simpy\\OneDrive\\Documents\\GitHub\\cit218\\LuxuryAutos\\LuxuryAutos\\LuxuryAutos\\LuxuryAutos.csproj": {}
   },
   "projects": {
-    "C:\\Users\\simpy\\OneDrive\\Documents\\GitHub\\cit218\\LuxuryAutos\\LuxuryAutos\\LuxuryAutos.csproj": {
+    "C:\\Users\\simpy\\OneDrive\\Documents\\GitHub\\cit218\\LuxuryAutos\\LuxuryAutos\\LuxuryAutos\\LuxuryAutos.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\simpy\\OneDrive\\Documents\\GitHub\\cit218\\LuxuryAutos\\LuxuryAutos\\LuxuryAutos.csproj",
+        "projectUniqueName": "C:\\Users\\simpy\\OneDrive\\Documents\\GitHub\\cit218\\LuxuryAutos\\LuxuryAutos\\LuxuryAutos\\LuxuryAutos.csproj",
         "projectName": "LuxuryAutos",
-        "projectPath": "C:\\Users\\simpy\\OneDrive\\Documents\\GitHub\\cit218\\LuxuryAutos\\LuxuryAutos\\LuxuryAutos.csproj",
+        "projectPath": "C:\\Users\\simpy\\OneDrive\\Documents\\GitHub\\cit218\\LuxuryAutos\\LuxuryAutos\\LuxuryAutos\\LuxuryAutos.csproj",
         "packagesPath": "C:\\Users\\simpy\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\simpy\\OneDrive\\Documents\\GitHub\\cit218\\LuxuryAutos\\LuxuryAutos\\obj\\",
+        "outputPath": "C:\\Users\\simpy\\OneDrive\\Documents\\GitHub\\cit218\\LuxuryAutos\\LuxuryAutos\\LuxuryAutos\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

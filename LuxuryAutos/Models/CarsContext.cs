@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using LuxuryAutos.Models;
 
 namespace LuxuryAutos.Models
 {
@@ -44,6 +45,53 @@ namespace LuxuryAutos.Models
 
                    }                 
                 );
+            modelBuilder.Entity<Employees>().HasData(
+                new Models.Employees
+                {
+                    Id = 1,
+                    FirstName = "Luxanna",
+                    LastName = "Crownguard",
+                    Email = "lcrownguard@luxAuto.com",
+                    Position = "Sales Associate",
+                    LocationId = 2
+                },
+                new Models.Employees
+                {
+                    Id = 2,
+                    FirstName = "Ahri",
+                    LastName = "Crownguard",
+                    Email = "acrownguard@luxAuto.com",
+                    Position = "Sales Associate",
+                    LocationId = 1
+                },
+                new Models.Employees
+                {
+                    Id = 3,
+                    FirstName = "Ashe",
+                    LastName = "Avarosan",
+                    Email = "aavarosn@luxAuto.com",
+                    Position = "Sales Associate",
+                    LocationId = 3
+                },
+                new Models.Employees
+                {
+                    Id = 4,
+                    FirstName = "Fiora",
+                    LastName = "Laurent",
+                    Email = "flaurent@luxAuto.com",
+                    Position = "Sales Associate",
+                    LocationId = 4
+                },
+                new Models.Employees
+                {
+                    Id = 5,
+                    FirstName = "Garen",
+                    LastName = "Crownguard",
+                    Email = "gcrownguard@luxAuto.com",
+                    Position = "Mechanic",
+                    LocationId = 2
+                }
+                );
             modelBuilder.Entity<Cars>().HasData(
                 new Models.Cars()
                 {
@@ -87,5 +135,7 @@ namespace LuxuryAutos.Models
                 }
                 );
         }
+
+        public DbSet<LuxuryAutos.Models.Employees>? Employees { get; set; }
     }
 }

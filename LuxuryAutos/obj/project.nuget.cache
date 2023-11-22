@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "MNJFWjJ9K7mWH4s0C2p0i1+gXpUifnhDYywc1b8tDBBwm3bE/lL0vUzdAtwfUIaGyVH7eIBqdfy0UPFZxipMHA==",
+  "dgSpecHash": "7BK0h4Zu29RVCgxmW6t25//DrLNNDatrmrBVI8xludEaF83mtGInAsBEvPmOCEpdU5ETTH4y+3cANZoXaHg1ow==",
   "success": true,
-  "projectFilePath": "C:\\Users\\simpy\\OneDrive\\Documents\\GitHub\\cit218\\LuxuryAutos\\LuxuryAutos\\LuxuryAutos.csproj",
+  "projectFilePath": "C:\\Users\\simpy\\OneDrive\\Documents\\GitHub\\cit218\\LuxuryAutos\\LuxuryAutos\\LuxuryAutos\\LuxuryAutos.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\simpy\\.nuget\\packages\\humanizer\\2.14.1\\humanizer.2.14.1.nupkg.sha512",
     "C:\\Users\\simpy\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
