@@ -6,9 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using LuxuryAutos.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace LuxuryAutos.Controllers
 {
+    [Authorize(Roles ="Administrator,Manager")]
     public class EmployeesController : Controller
     {
         private readonly CarsContext _context;

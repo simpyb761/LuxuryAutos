@@ -6,9 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using LuxuryAutos.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace LuxuryAutos.Controllers
 {
+    [Authorize(Roles = "Administrator,Manager")]
     public class CarsController : Controller
     {
         private readonly CarsContext _context;
@@ -19,11 +21,42 @@ namespace LuxuryAutos.Controllers
         }
 
         // GET: Cars
-        public async Task<IActionResult> Index()
+        [AllowAnonymous]
+        public async Task<IActionResult> Index(string sortOrder,string currentFilter, string searchString, int? pageNumber)
         {
-              return _context.Cars != null ? 
-                          View( await _context.Cars.Include(a =>a.Location).ToListAsync()) :
-                          Problem("Entity set 'CarsContext.Cars'  is null.");
+            ViewData["CurrentSort"] = sortOrder;
+            ViewData["MakeSort"] = String.IsNullOrEmpty(sortOrder) ? "make_desc" : "";
+            ViewData["LocationSort"] = sortOrder == "location" ? "location_desc" : "location";
+            ViewData["CarMakes"] = new SelectList(_context.Cars, "Make", "Make");
+
+            var carsContext = from e in _context.Cars.Include(c => c.Location)
+                              select e;
+            ViewData["CurrentFilter"] = searchString;
+            if (searchString == "Make")
+            {
+                searchString = "";
+            }
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                carsContext = carsContext.Where(s => s.Make == Enum.Parse<Make>(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "make_desc":
+                    carsContext = carsContext.OrderByDescending(c => c.Make);
+                    break;
+                case "location_desc":
+                    carsContext = carsContext.OrderByDescending(c=> c.Location.LocationName); 
+                    break;
+                case "location":
+                    carsContext = carsContext.OrderBy(c => c.Location.LocationName);
+                    break;
+                default:
+                    carsContext = carsContext.OrderBy(c=> c.Make);
+                    break;
+            }
+            int pageSize = 4;
+            return View(await PaginatedList<Cars>.CreateAsync(carsContext.AsNoTracking(),pageNumber??1,pageSize));
         }
 
         // GET: Cars/Details/5
@@ -35,6 +68,7 @@ namespace LuxuryAutos.Controllers
             }
 
             var cars = await _context.Cars
+                .Include(c => c.Location)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (cars == null)
             {
@@ -47,6 +81,8 @@ namespace LuxuryAutos.Controllers
         // GET: Cars/Create
         public IActionResult Create()
         {
+            ViewData["LocationId"] = new SelectList(_context.Locations, "LocationId", "LocationId");
+            ViewData["CarMakes"] = new SelectList(_context.Cars, "Make", "Make");
             return View();
         }
 
@@ -55,7 +91,7 @@ namespace LuxuryAutos.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Model,Make,Price,TopSpeed,CarPicture")] Cars cars)
+        public async Task<IActionResult> Create([Bind("Id,Model,Make,Price,TopSpeed,CarPicture,LocationId")] Cars cars)
         {
             if (ModelState.IsValid)
             {
@@ -63,6 +99,7 @@ namespace LuxuryAutos.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["LocationId"] = new SelectList(_context.Locations, "LocationId", "LocationId", cars.LocationId);
             return View(cars);
         }
 
@@ -79,6 +116,7 @@ namespace LuxuryAutos.Controllers
             {
                 return NotFound();
             }
+            ViewData["LocationId"] = new SelectList(_context.Locations, "LocationId", "LocationId", cars.LocationId);
             return View(cars);
         }
 
@@ -87,7 +125,7 @@ namespace LuxuryAutos.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Model,Make,Price,TopSpeed,CarPicture")] Cars cars)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Model,Make,Price,TopSpeed,CarPicture,LocationId")] Cars cars)
         {
             if (id != cars.Id)
             {
@@ -114,6 +152,7 @@ namespace LuxuryAutos.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["LocationId"] = new SelectList(_context.Locations, "LocationId", "LocationId", cars.LocationId);
             return View(cars);
         }
 
@@ -126,6 +165,7 @@ namespace LuxuryAutos.Controllers
             }
 
             var cars = await _context.Cars
+                .Include(c => c.Location)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (cars == null)
             {
@@ -149,14 +189,14 @@ namespace LuxuryAutos.Controllers
             {
                 _context.Cars.Remove(cars);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool CarsExists(int id)
         {
-          return (_context.Cars?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Cars?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

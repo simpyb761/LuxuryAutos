@@ -102,6 +102,89 @@ namespace LuxuryAutos.Migrations
                         });
                 });
 
+            modelBuilder.Entity("LuxuryAutos.Models.Employees", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<int>("LocationId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Position")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("LocationId");
+
+                    b.ToTable("Employees");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Email = "lcrownguard@luxAuto.com",
+                            FirstName = "Luxanna",
+                            LastName = "Crownguard",
+                            LocationId = 2,
+                            Position = "Sales Associate"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Email = "acrownguard@luxAuto.com",
+                            FirstName = "Ahri",
+                            LastName = "Crownguard",
+                            LocationId = 1,
+                            Position = "Sales Associate"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Email = "aavarosn@luxAuto.com",
+                            FirstName = "Ashe",
+                            LastName = "Avarosan",
+                            LocationId = 3,
+                            Position = "Sales Associate"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Email = "flaurent@luxAuto.com",
+                            FirstName = "Fiora",
+                            LastName = "Laurent",
+                            LocationId = 4,
+                            Position = "Sales Associate"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Email = "gcrownguard@luxAuto.com",
+                            FirstName = "Garen",
+                            LastName = "Crownguard",
+                            LocationId = 2,
+                            Position = "Mechanic"
+                        });
+                });
+
             modelBuilder.Entity("LuxuryAutos.Models.Location", b =>
                 {
                     b.Property<int>("LocationId")
@@ -112,16 +195,19 @@ namespace LuxuryAutos.Migrations
 
                     b.Property<string>("Address")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
 
                     b.Property<string>("LocationName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)")
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)")
                         .HasColumnName("Location Name");
 
                     b.Property<string>("Manager")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)");
 
                     b.HasKey("LocationId");
 
@@ -159,6 +245,17 @@ namespace LuxuryAutos.Migrations
                 });
 
             modelBuilder.Entity("LuxuryAutos.Models.Cars", b =>
+                {
+                    b.HasOne("LuxuryAutos.Models.Location", "Location")
+                        .WithMany()
+                        .HasForeignKey("LocationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Location");
+                });
+
+            modelBuilder.Entity("LuxuryAutos.Models.Employees", b =>
                 {
                     b.HasOne("LuxuryAutos.Models.Location", "Location")
                         .WithMany()

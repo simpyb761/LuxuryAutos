@@ -1,4 +1,5 @@
-﻿@model IEnumerable<LuxuryAutos.Models.Cars>
+﻿@using LuxuryAutos.Models;
+@model PaginatedList<LuxuryAutos.Models.Cars>
 
 @{
     ViewData["Title"] = "Index";
@@ -8,22 +9,73 @@
     <div class="row col-12">
         <h1 class="mb-4">Inventory</h1>
     </div>
+    <div class="text-end row">
+        <div class="col-7 text-end">
+            <form asp-action="Index" method="get">
+            <div class="form-actions no-color">
+                <select name="SearchString" style="height:38px;">
+                    <option>Make</option>
+                    <option>@Make.Ferrari</option>
+                    <option>@Make.Lamborghini</option>
+                    <option>@Make.Porsche</option>
+                </select>
+                <input type="submit" value="Search" class="btn" style="background-color:black;color:red;" />
+
+            </div>
+            </form>
+        </div> 
+        <div class="col-2">
+            <a asp-action="Index"><button class="btn" style="background-color:black;color:red;">Return to Full List</button></a>
+        </div>
+        <div class="col-2 text-end">
+            <a asp-action="Index" asp-route-sortOrder="@ViewData["MakeSort"]"><button class="btn" style="background-color:black;color:red;">Make</button></a>
+            <a asp-action="Index" asp-route-sortOrder="@ViewData["LocationSort"]"><button class="btn" style="background-color:black;color:red;">Location</button></a>
+        </div>
+    </div>
     <div class="row mt-1 text-center">
         @foreach (var item in Model)
         {
             <div class="col-6 bg-dark p-4">
                 <h3 style="color:white;">@Html.DisplayFor(modelItem => item.Make) @Html.DisplayFor(modelItem => item.Model)</h3>
-                <img src="@Html.DisplayFor(modelItem => item.CarPicture)" alt="@Html.DisplayFor(modelItem => item.Model) Picture">
-                <p class="border bg-white p-3 text-center w-50 text-center ms-auto me-auto rounded mt-2">
+                <img style="width:75%;" src="@Html.DisplayFor(modelItem => item.CarPicture)" alt="@Html.DisplayFor(modelItem => item.Model) Picture">
+                <p style="min-width:fit-content;" class="border bg-white p-3 text-center w-50 text-center ms-auto me-auto rounded mt-2">
                     Price: @Html.DisplayFor(model => item.Price)<br>
                     Top Speed: @Html.DisplayFor(model => item.TopSpeed)<sup>*</sup><br>
                     Location: @Html.DisplayFor(model => item.Location.LocationName)
                 </p>
-                <a style="color:red; text-decoration:none;" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |               
-                <a style="color:red; text-decoration:none;" asp-action="Delete" asp-route-id="@item.Id">Delete</a> |
-                <a style="color:red; text-decoration:none;" asp-action="Create">Create New</a>
+                @{
+                    if (User.IsInRole("Administrator") || User.IsInRole("Manager"))
+                    {
+                        <a style="color:red; text-decoration:none;" asp-action="Edit" asp-route-id="@item.Id"><button class="mt-1 p-1 text-danger" style="background-color:black">Edit</button></a>
+                        <a style="color:red; text-decoration:none;" asp-action="Delete" asp-route-id="@item.Id"><button class="mt-1 p-1 text-danger" style="background-color:black">Delete</button></a>
+                    }
+                }
+                
+                 
+
             </div>
-        }         
+        }
+        @{
+            if (User.IsInRole("Administrator") || User.IsInRole("Manager"))
+            {
+                <a style="color:red; text-decoration:none;" asp-action="Create"><button class="mt-1 p-1 text-danger" style="background-color:black">Add New Inventory</button></a>
+            }
+        }
+        @{
+            var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+            var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+        }
+        <a asp-action="Index"
+            asp-route-sortOrder="@ViewData["CurrentSort"]"
+            asp-route-pageNumber="@(Model.PageIndex-1)"
+            asp-route-currentFilter="@ViewData["CurrentFilter"]"
+            class="btn @prevDisabled">Previous</a>
+        <a asp-action="Index"
+           asp-route-sortOrder="@ViewData["CurrentSort"]"
+           asp-route-pageNumber="@(Model.PageIndex+1)"
+           asp-route-currentFilter="@ViewData["CurrentFilter"]"
+           class="btn @nextDisabled">Next</a>
+            
     </div>
 </div>
 

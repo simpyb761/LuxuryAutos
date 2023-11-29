@@ -4,26 +4,25 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
-
 <div class="row text-center mt-4 bg-danger p-5">
     <div class="row col-12">
-        <h1 class="mb-4">Inventory</h1>
+        <h1 class="mb-4">Employees</h1>
     </div>
     <div class="row mt-1 text-center">
         @foreach (var item in Model)
         {
             <div class="col-6 bg-dark p-4">
-                <h3 style="color:white;">@Html.DisplayFor(modelItem => item.FirstName) @Html.DisplayFor(modelItem => item.LastName)</h3>
-                <p class="border bg-white p-3 text-center w-75 text-center ms-auto me-auto rounded mt-2">
-                    Location: @Html.DisplayFor(model => item.Location.LocationName)<br>
-                    Position: @Html.DisplayFor(model => item.Position)<br>
-                    Email: @Html.DisplayFor(model => item.Email)
+                <h3 style="color:white;">@Html.DisplayFor(modelItem => item.FirstName) @Html.DisplayFor(modelItem => item.LastName)</h3>               
+                <p style="min-width:fit-content;" class="border bg-white p-3 text-center w-50 text-center ms-auto me-auto rounded mt-2">
+                    Price: @Html.DisplayFor(model => item.Location.LocationName)<br>
+                    Top Speed: @Html.DisplayFor(model => item.Position)<sup>*</sup><br>
+                    Location: @Html.DisplayFor(model => item.Email)
                 </p>
-                <a style="color:red; text-decoration:none;" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a style="color:red; text-decoration:none;" asp-action="Delete" asp-route-id="@item.Id">Delete</a> |
+                <a style="color:red; text-decoration:none;" asp-action="Edit" asp-route-id="@item.Id"><button class="mt-1 p-1 text-danger" style="background-color:black">Edit</button></a> |
+                <a style="color:red; text-decoration:none;" asp-action="Delete" asp-route-id="@item.Id"><button class="mt-1 p-1 text-danger" style="background-color:black">Delete</button></a> |
+
             </div>
         }
+        <a style="color:red; text-decoration:none;" asp-action="Create"><button class="mt-1 p-1 text-danger" style="background-color:black">Add New Employee</button></a>
     </div>
-    <a style="color:red; text-decoration:none;" asp-action="Create">Create New</a>
 </div>

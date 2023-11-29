@@ -30,21 +30,22 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Cars" asp-action="Index"><i class="fa-solid fa-warehouse"></i> Inventory </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Locations" asp-action="Index"><i class="fa-solid fa-warehouse"></i>Locations</a>
-                        </li>
-                        <li class="nav-item">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Employees" asp-action="Index"><i class="fa-solid fa-warehouse"></i>Employees</a>
-                        </li>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Locations" asp-action="Index"><i class="fa-solid fa-map-location-dot" style="color: #000000;"></i> Locations</a>
+                        </li>                   
+                            @{
+                                if (User.IsInRole("Administrator") || User.IsInRole("Manager"))
+                                {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Employees" asp-action="Index"><i class="fa-regular fa-user" style="color: #000000;"></i> Employees</a>
+                                </li>
+                                }
+                            }                       
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="About"><i class="fa-solid fa-question"></i> About</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Contact"><i class="fa-solid fa-phone"></i> Contact</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy"><i class="fa-solid fa-user-secret"></i> Privacy</a>
-                        </li>
+                        </li>                      
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>
@@ -57,7 +58,7 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="border-top footer text-muted" style="position:relative;">
         <div class="container">
             &copy; 2023 - LuxuryAutos - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>

@@ -6,9 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using LuxuryAutos.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace LuxuryAutos.Controllers
 {
+    [Authorize(Roles ="Administrator,Manager")]
     public class LocationsController : Controller
     {
         private readonly CarsContext _context;
@@ -19,6 +21,7 @@ namespace LuxuryAutos.Controllers
         }
 
         // GET: Locations
+        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             return _context.Locations != null ?

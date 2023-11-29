@@ -17,8 +17,16 @@
       "PackagePath": "staticwebassets\\Images\\background.jpg"
     },
     {
+      "Id": "C:\\Users\\simpy\\OneDrive\\Documents\\GitHub\\cit218\\LuxuryAutos\\LuxuryAutos\\LuxuryAutos\\wwwroot\\Images\\cayman.jpg",
+      "PackagePath": "staticwebassets\\Images\\cayman.jpg"
+    },
+    {
       "Id": "C:\\Users\\simpy\\OneDrive\\Documents\\GitHub\\cit218\\LuxuryAutos\\LuxuryAutos\\LuxuryAutos\\wwwroot\\Images\\f12Optimized.jpg",
       "PackagePath": "staticwebassets\\Images\\f12Optimized.jpg"
+    },
+    {
+      "Id": "C:\\Users\\simpy\\OneDrive\\Documents\\GitHub\\cit218\\LuxuryAutos\\LuxuryAutos\\LuxuryAutos\\wwwroot\\Images\\ferrari458spider.jpg",
+      "PackagePath": "staticwebassets\\Images\\ferrari458spider.jpg"
     },
     {
       "Id": "C:\\Users\\simpy\\OneDrive\\Documents\\GitHub\\cit218\\LuxuryAutos\\LuxuryAutos\\LuxuryAutos\\wwwroot\\Images\\gt3Optimized.jpg",
